@@ -49,7 +49,7 @@ export default createPrompt<string, InputConfig>((config, done) => {
       } else {
         // Reset the readline line value to the previous value. On line event, the value
         // get cleared, forcing the user to re-enter the value instead of fixing it.
-        rl.write(value);
+        rl.clearLne(value);
         setError(isValid || 'You must provide a valid value');
         setStatus('pending');
       }
@@ -61,7 +61,7 @@ export default createPrompt<string, InputConfig>((config, done) => {
       rl.write(defaultValue);
       setValue(defaultValue);
     } else {
-      setValue(rl.line);
+      // setValue(rl.line);
       setError(undefined);
     }
   });
